@@ -25,9 +25,9 @@ const SubmenuButton = () => {
         className="bg-black w-16 h-16 z-20 absolute right-0 flex items-center justify-center focus:outline-none"
         onPointerEnter={handleMouseEnter}
         onPointerLeave={handleMouseLeave}
-        onClick={() => {
-          setIsOpen((prev) => !prev);
-        }}
+        // onClick={() => {
+        //   setIsOpen((prev) => !prev);
+        // }}
       >
         <div className="relative w-8 h-8 flex flex-col justify-center items-center">
           <span
@@ -44,7 +44,7 @@ const SubmenuButton = () => {
       </button>
 
       <div
-        className={`bg-gray-400 w-80 h-80 relative z-10 transition-all duration-200 ease-out ${
+        className={`bg-gray-400 w-80 h-80 relative z-10${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onPointerEnter={handleMouseEnter}
