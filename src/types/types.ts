@@ -1,3 +1,6 @@
-const a = "as"
-  
-  export default a;
+export interface SegmentProps {
+  segmentNumber: number;
+  segments:number;
+  goToSegment: (segment: number) => void;
+}
+
