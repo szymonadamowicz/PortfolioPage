@@ -4,7 +4,7 @@ import useScrollHandler from "../UseScrollHandler";
 import SideBarDisplay from "./SideBarDisplay";
 
 const HomePage: React.FC = () => {
-  const segments = 3;
+  const segments = 4;
   const scrollSpeed = 0.25;
   const scrollTimeoutDuration = 250;
 
@@ -30,7 +30,6 @@ const HomePage: React.FC = () => {
 
   return (
     <div>
-      {/* Przekazujemy funkcję goToSegment do nawigacji */}
       <SideBarDisplay segmentNumber={segmentNumber} segments={segments} goToSegment={goToSegment} />
       <div style={{ height: "100vh" }}>
         <FirstSegment />
@@ -43,6 +42,9 @@ const HomePage: React.FC = () => {
       </div>
       <div style={{ height: "100vh", backgroundColor: "pink" }}>
         <h1>4</h1>
+      </div>
+      <div style={{ height: "100vh", backgroundColor: "red" }}>
+        <h1>5</h1>
       </div>
     </div>
   );

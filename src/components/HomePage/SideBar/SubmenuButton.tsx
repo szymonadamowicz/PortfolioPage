@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import PageOverlay from "../../PageOverlay";
 import Submenu from "../SideBar/Submenu";
 
 const SubmenuButton = () => {
@@ -23,15 +22,29 @@ const SubmenuButton = () => {
   return (
     <>
       <button
-        className="bg-black w-16 h-16 z-20 absolute right-0"
+        className="bg-black w-16 h-16 z-20 absolute right-0 flex items-center justify-center focus:outline-none"
         onPointerEnter={handleMouseEnter}
         onPointerLeave={handleMouseLeave}
         onClick={() => {
           setIsOpen((prev) => !prev);
         }}
-      />
+      >
+        <div className="relative w-8 h-8 flex flex-col justify-center items-center">
+          <span
+            className={`block w-8 h-0.5 bg-white absolute transition-transform duration-500 ease-in-out ${
+              isOpen ? "rotate-45" : "-translate-y-2"
+            }`}
+          ></span>
+          <span
+            className={`block w-8 h-0.5 bg-white absolute transition-transform duration-500 ease-in-out ${
+              isOpen ? "-rotate-45" : "translate-y-2"
+            }`}
+          ></span>
+        </div>
+      </button>
+
       <div
-        className={`bg-gray-400 w-80 h-80 relative z-10 transition-all duration-300 ease-out ${
+        className={`bg-gray-400 w-80 h-80 relative z-10 transition-all duration-200 ease-out ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onPointerEnter={handleMouseEnter}

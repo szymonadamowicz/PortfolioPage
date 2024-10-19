@@ -2,7 +2,7 @@ import React from "react";
 import { SegmentProps } from "../../types/types";
 
 const SegmentCounter: React.FC<SegmentProps> = ({ segmentNumber, segments, goToSegment }) => {
-  const segmentsArray = Array.from({ length: segments + 1 }, (_, i) => i);
+  const segmentsArray = Array.from({ length: segments  }, (_, i) => i);
 
   return (
     <div className="fixed right-12 top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-4">
