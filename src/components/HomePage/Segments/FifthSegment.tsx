@@ -25,7 +25,7 @@ const FifthSegment: React.FC = () => {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full max-w-xl mt-8 bg-gray-800 p-8 rounded-lg shadow-lg"
+          className="w-full max-w-xl mt-8 bg-gray-800 p-6 rounded-lg shadow-lg"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-col">
@@ -52,7 +52,7 @@ const FifthSegment: React.FC = () => {
                     message: "Please enter a valid email",
                   },
                 })}
-                className="px-6 py-4 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                className="px-8 py-4 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
                 placeholder="Enter your email"
               />
               {errors.email && (
