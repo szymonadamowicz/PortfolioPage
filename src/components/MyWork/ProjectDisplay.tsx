@@ -3,20 +3,28 @@ import { projectInfoProps } from "../../types/types";
 
 const ProjectDisplay: React.FC<projectInfoProps> = ({ projectInfo }) => {
   return (
-    <div className="w-72 h-72 bg-white shadow-md rounded-lg p-2 flex flex-col border border-gray-200">
-      <div className="w-full h-2/5 bg-red-200 rounded-md p-1 flex items-center justify-center">
-        <div className="text-lg font-semibold text-gray-800 text-center">
-          {projectInfo.name}
-        </div>
+    // TODO: onClick open preview of a project
+    <div className="w-80 h-80 bg-gray-900 text-white shadow-lg rounded-lg p-4 flex flex-col justify-between border border-gray-800 transform transition-transform hover:scale-105">
+      <div className="w-full h-2/5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md p-4 flex items-center justify-center">
+        <div className="text-xl font-bold text-center">{projectInfo.name}</div>
       </div>
 
-      <div className="mt-5">
-        <Link href={projectInfo.link}>GitHub Link</Link>
-
-        <div className="text-gray-400">
-          {projectInfo.stack.map((item, index) => (
-            <div>{item}</div>
-          ))}
+      <div className="flex flex-col justify-between mb-4">
+        <Link
+          href={projectInfo.link}
+          className="text-indigo-400 hover:underline text-lg"
+        >
+          GitHub Link
+        </Link>
+        <div className="text-gray-300 mt-2">
+          <span className="text-sm font-semibold">Stack:</span>
+          <ul className="mt-2 list-disc list-inside">
+            {projectInfo.stack.map((item, index) => (
+              <li key={index} className="text-sm">
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

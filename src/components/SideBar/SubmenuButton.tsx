@@ -1,7 +1,12 @@
 import React, { useState, useRef } from "react";
-import Submenu from "../SideBar/Submenu";
+import Submenu from "./Submenu";
 
-const SubmenuButton = () => {
+interface SubmenuProps {
+  segments?:number;
+  goToSegment?:(index:number)=>void
+}
+
+const SubmenuButton:React.FC<SubmenuProps> = ({segments, goToSegment}) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -20,7 +25,7 @@ const SubmenuButton = () => {
   };
 
   return (
-    <>
+    <div className="fixed right-12 top-12">
       <button
         className="bg-black w-16 h-16 z-20 absolute right-0 flex items-center justify-center focus:outline-none"
         onPointerEnter={handleMouseEnter}
@@ -50,9 +55,9 @@ const SubmenuButton = () => {
         onPointerEnter={handleMouseEnter}
         onPointerLeave={handleMouseLeave}
       >
-        <Submenu />
+        <Submenu segments={segments} goToSegment={goToSegment}/>
       </div>
-    </>
+    </div>
   );
 };
 

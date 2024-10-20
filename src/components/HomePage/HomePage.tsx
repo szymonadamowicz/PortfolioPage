@@ -8,7 +8,7 @@ import FourthSegment from "./Segments/FourthSegment";
 import FifthSegment from "./Segments/FifthSegment";
 
 const HomePage: React.FC = () => {
-  const segments = 5;
+  const segments = 4;
   const scrollSpeed = 0.25;
   const scrollTimeoutDuration = 250;
 
@@ -50,9 +50,6 @@ const HomePage: React.FC = () => {
       </div>
       <div style={{ height: "100vh" }}>
         <FifthSegment />
-      </div>
-      <div style={{ height: "100vh" }}>
-        last segment
       </div>
     </div>
   );

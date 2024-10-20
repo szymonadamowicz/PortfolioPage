@@ -6,9 +6,8 @@ interface PageOverlayProps {
 }
 
 const PageOverlay: React.FC<PageOverlayProps> = ({ children, bgc }) => {
-  console.log(bgc)
   return (
-    <div className="h-screen" style={{ backgroundColor: bgc ? bgc : "navy" }}>
+    <div className="h-screen w-full flex justify-center items-center" style={{ backgroundColor: bgc ? bgc : "navy" }}>
       {children}
     </div>
   );

@@ -1,31 +1,25 @@
 import React from "react";
 import PageOverlay from "../../PageOverlay";
-import {ReactTyped} from "react-typed";
-
-// #0A0F29
-// #2C003E
-// #004C4C
-// #1E1E1E
-// #3C1F1F
+import { ReactTyped } from "react-typed";
 
 const FirstSegment = () => {
-  const bgc = "red"
+  const bgc = "#1F2937";
   return (
     <PageOverlay bgc={bgc}>
-      <div>
-        info about me
+      <div className="flex flex-col items-center gap-8">
+        <h1 className="text-6xl font-bold text-lime-400">Hello, I'm Szymon!</h1>
+        <h2 className="text-4xl text-gray-300">
+          I'm a{" "}
+          <ReactTyped
+            strings={["Developer", "Student", "Designer"]}
+            typeSpeed={100}
+            loop
+            backSpeed={50}
+            cursorChar=">"
+            showCursor={true}
+          />
+        </h2>
       </div>
-      <h1>
-        I'm a{" "}
-        <ReactTyped
-          strings={["Developer", "Writer", "Designer"]}
-          typeSpeed={100}
-          loop
-          backSpeed={50}
-          cursorChar=">"
-          showCursor={true}
-        />
-      </h1>{" "}
     </PageOverlay>
   );
 };
