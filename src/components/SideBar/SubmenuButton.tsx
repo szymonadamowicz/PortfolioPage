@@ -2,11 +2,11 @@ import React, { useState, useRef } from "react";
 import Submenu from "./Submenu";
 
 interface SubmenuProps {
-  segments?:number;
-  goToSegment?:(index:number)=>void
+  segments?: number;
+  goToSegment?: (index: number) => void;
 }
 
-const SubmenuButton:React.FC<SubmenuProps> = ({segments, goToSegment}) => {
+const SubmenuButton: React.FC<SubmenuProps> = ({ segments, goToSegment }) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -27,14 +27,11 @@ const SubmenuButton:React.FC<SubmenuProps> = ({segments, goToSegment}) => {
   return (
     <div className="fixed right-12 top-12">
       <button
-        className="bg-black w-16 h-16 z-20 absolute right-0 flex items-center justify-center focus:outline-none"
+        className="w-14 h-14 z-20 absolute right-0 flex items-center justify-center focus:outline-none"
         onPointerEnter={handleMouseEnter}
         onPointerLeave={handleMouseLeave}
-        // onClick={() => {
-        //   setIsOpen((prev) => !prev);
-        // }}
       >
-        <div className="relative w-8 h-8 flex flex-col justify-center items-center">
+        <div className="relative w-full h-full flex flex-col justify-center items-center">
           <span
             className={`block w-8 h-0.5 bg-white absolute transition-transform duration-500 ease-in-out ${
               isOpen ? "rotate-45" : "-translate-y-2"
@@ -49,13 +46,13 @@ const SubmenuButton:React.FC<SubmenuProps> = ({segments, goToSegment}) => {
       </button>
 
       <div
-        className={`bg-gray-400 w-80 h-80 relative z-10${
+        className={`bg-gray-400 w-80 h-80 relative z-10 ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onPointerEnter={handleMouseEnter}
         onPointerLeave={handleMouseLeave}
       >
-        <Submenu segments={segments} goToSegment={goToSegment}/>
+        <Submenu segments={segments} goToSegment={goToSegment} />
       </div>
     </div>
   );

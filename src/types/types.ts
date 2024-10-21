@@ -8,6 +8,7 @@ interface projectInfo {
   link: string;
   name: string;
   stack: string[];
+  desc:string;
 }
 
 export interface projectInfoProps {
