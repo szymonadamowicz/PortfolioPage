@@ -26,26 +26,26 @@ const Submenu: React.FC<SubmenuProps> = ({ segments, goToSegment }) => {
     <div className="w-full h-full bg-gray-800 flex justify-center items-center pt-8">
       <div className="space-y-4 text-center py-10 w-full p-2">
         {!isHomePage && (
-          <div className="text-white text-md hover:text-blue-400 transition duration-300 border-t border-b border-white py-2">
-            <Link href="/">Home</Link>
+          <div className="text-white w-full text-md hover:text-blue-400 transition duration-300 border-t border-b border-white py-2">
+            <Link className="block w-full" href="/">Home</Link>
           </div>
         )}
         <div className="text-white text-md hover:text-blue-400 transition duration-300 border-t border-b border-white py-2">
-          <Link href="/myresume" target="_blank" rel="noopener noreferrer">
+          <Link className="block w-full" href="/myresume" target="_blank" rel="noopener noreferrer">
             My Resume
           </Link>
         </div>
         <div className="text-white text-md hover:text-blue-400 transition duration-300 border-t border-b border-white py-2">
-          <Link href="/mywork">My Projects</Link>
+          <Link className="block w-full" href="/mywork">My Projects</Link>
         </div>
-        <div className="mt-8 text-white border-t border-b border-white py-2">
-          <h3 className="text-xl font-semibold underline decoration-blue-400 ">
+        <div className="mt-8 text-lime-400 border-t border-b border-white py-2">
+          <h3 className="text-2xl font-semibold">
             Contact Me!
           </h3>
           <div className="mt-4">
             <button
               onClick={handleEmailClick}
-              className="text-white text-lg underline hover:text-blue-400 transition duration-300"
+              className="text-white text-lg underline hover:text-blue-400 transition duration-300 w-full"
             >
               adamowiczszymon8@gmail.com
             </button>
@@ -55,7 +55,7 @@ const Submenu: React.FC<SubmenuProps> = ({ segments, goToSegment }) => {
               href="https://www.linkedin.com/in/szymonadamowicz/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white text-lg underline hover:text-blue-400 transition duration-300"
+              className="text-white text-lg underline hover:text-blue-400 transition duration-300 block w-full"
             >
               Linkedin
             </Link>

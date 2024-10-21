@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import FirstSegment from "./Segments/FirstSegment";
 import useScrollHandler from "../UseScrollHandler";
 import SideBarDisplay from "./SideBarDisplay";
@@ -6,8 +6,11 @@ import SecondSegment from "./Segments/SecondSegment";
 import ThirdSegment from "./Segments/ThirdSegment";
 import FourthSegment from "./Segments/FourthSegment";
 import FifthSegment from "./Segments/FifthSegment";
+import { useRouter } from "next/router";
 
 const HomePage: React.FC = () => {
+  const router = useRouter();
+
   const segments = 4;
   const scrollSpeed = 0.25;
   const scrollTimeoutDuration = 250;
@@ -23,11 +26,27 @@ const HomePage: React.FC = () => {
     };
   }, []);
 
-  const goToSegment = (segment: number) => {
-    const targetScroll = segment * segmentHeight;
-    setSegmentNumber(segment);
-    smoothScroll(targetScroll);
-  };
+  const goToSegment = useCallback(
+    (segment: number) => {
+      const targetScroll = segment * segmentHeight;
+      setSegmentNumber(segment);
+      smoothScroll(targetScroll);
+    },
+    [segmentHeight, setSegmentNumber, smoothScroll]
+  );
+
+  const handleRouteChange = useCallback(() => {
+    window.scrollTo(0, 0);
+    goToSegment(0);
+  }, [goToSegment]);
+
+  useEffect(() => {
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events, handleRouteChange]);
 
   return (
     <div>
