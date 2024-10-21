@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border-radius: 0px;
+}
+
+#fullpage {
+  height: 100vh;
+  overflow: hidden;
+
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fp-watermark {
+  display: none !important;
+}
+

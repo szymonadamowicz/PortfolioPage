@@ -29,7 +29,7 @@ const Submenu: React.FC<SubmenuProps> = ({ segments, goToSegment }) => {
           </div>
         )}
         <div>
-          <Link href="/myresume" target="blank">
+          <Link href="/myresume" target="_blank" rel="noopener noreferrer">
               My Resume
           </Link>
         </div>
@@ -44,7 +44,7 @@ const Submenu: React.FC<SubmenuProps> = ({ segments, goToSegment }) => {
             </button>
           </div>
           <div>
-            <Link href="https://www.linkedin.com/in/szymonadamowicz/">
+            <Link href="https://www.linkedin.com/in/szymonadamowicz/" target="_blank" rel="noopener noreferrer">
               Linkedin
             </Link>
           </div>
