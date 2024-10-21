@@ -3,12 +3,12 @@ import PageOverlay from "../../PageOverlay";
 import { ReactTyped } from "react-typed";
 
 const FirstSegment = () => {
-  const bgc = "#1F2937";
+  const bgc = "#0A014F";
   return (
     <PageOverlay bgc={bgc}>
       <div className="flex flex-col items-center gap-8">
         <h1 className="text-6xl font-bold text-lime-400">Hello, I'm Szymon!</h1>
-        <h2 className="text-4xl text-gray-300">
+        <h2 className="text-4xl text-white">
           I'm a{" "}
           <ReactTyped
             strings={["Developer", "Student", "Designer"]}

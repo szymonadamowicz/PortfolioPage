@@ -32,15 +32,15 @@ const FifthSegment: React.FC = () => {
       );
   };
 
-  const bgc = "#0F172A";
+  const bgc = "#0A014F";
 
   return (
     <PageOverlay bgc={bgc}>
       <div className="flex flex-col items-center justify-center h-full text-center">
-        <h2 className="text-5xl text-indigo-400 font-semibold">
+        <h2 className="text-5xl text-lime-400 font-semibold">
           Get In Touch!
         </h2>
-        <p className="text-lg text-gray-300 mt-2">
+        <p className="text-lg text-white mt-2">
           Got a project in mind? Just send me a message!
         </p>
 
@@ -51,7 +51,7 @@ const FifthSegment: React.FC = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-col">
-              <label className="text-gray-300 font-semibold">Your Name</label>
+              <label className="text-white font-semibold">Your Name</label>
               <input
                 {...register("name", { required: "Name is required" })}
                 name="name"
@@ -66,7 +66,7 @@ const FifthSegment: React.FC = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="text-gray-300 font-semibold">Email</label>
+              <label className="text-white font-semibold">Email</label>
               <input
                 {...register("email", {
                   required: "Email is required",
@@ -88,7 +88,7 @@ const FifthSegment: React.FC = () => {
           </div>
 
           <div className="flex flex-col mt-6">
-            <label className="text-gray-300 font-semibold">Your Message</label>
+            <label className="text-white font-semibold">Your Message</label>
             <textarea
               {...register("message", { required: "Message is required" })}
               name="message"
@@ -106,7 +106,7 @@ const FifthSegment: React.FC = () => {
           <div className="mt-8 flex justify-center">
             <button
               type="submit"
-              className="px-16 py-3 bg-indigo-500 hover:bg-indigo-400 text-white rounded-md font-semibold transition duration-300 ease-in-out transform hover:scale-105"
+              className="px-16 py-3 bg-blue-900 hover:bg-blue-800 text-white rounded-md font-semibold transition duration-300 ease-in-out transform hover:scale-105"
             >
               Send Message
             </button>

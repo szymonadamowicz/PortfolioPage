@@ -3,7 +3,7 @@ import PageOverlay from "../../PageOverlay";
 import Link from "next/link";
 
 const FourthSegment = () => {
-  const bgc = "#262626";
+  const bgc = "#4A68B0";
   return (
     <PageOverlay bgc={bgc}>
       <div className="flex flex-col md:flex-row justify-center gap-20">
@@ -13,7 +13,7 @@ const FourthSegment = () => {
           </h1>
           <div className="mt-4">
             <Link href={"/mywork"}>
-              <button className="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-white rounded-md">
+              <button className="px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
                 Go to MyWork
               </button>
             </Link>
@@ -24,7 +24,7 @@ const FourthSegment = () => {
           <h1 className="text-4xl font-semibold">More info in my CV</h1>
           <div className="mt-4">
             <a href="/CV.pdf" download>
-              <button className="px-6 py-3 bg-purple-500 hover:bg-purple-400 text-white rounded-md">
+              <button className="px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white rounded-md">
                 Download CV
               </button>
             </a>
