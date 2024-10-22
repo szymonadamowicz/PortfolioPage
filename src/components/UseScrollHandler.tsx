@@ -58,6 +58,8 @@ const useScrollHandler = (
       setSegmentNumber(newSegmentNumber);
       smoothScroll(targetScroll);
 
+      window.location.hash = `#${newSegmentNumber}`;
+
       setTimeout(() => {
         setIsScrolling(false);
       }, scrollTimeoutDuration);
@@ -81,6 +83,13 @@ const useScrollHandler = (
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSegmentHeight(window.innerHeight);
+
+      const currentHash = window.location.hash;
+      const hashSegment = currentHash ? parseInt(currentHash.replace("#", "")) : 0;
+
+      setSegmentNumber(hashSegment);
+
+      window.scrollTo(0, hashSegment * window.innerHeight);
 
       window.addEventListener("wheel", handleScroll, { passive: false });
       window.addEventListener("resize", updateSegmentHeight);

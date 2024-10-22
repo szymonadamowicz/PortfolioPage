@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import PageOverlay from "../../PageOverlay";
 import emailjs from "@emailjs/browser";
@@ -11,7 +11,7 @@ const FifthSegment: React.FC = () => {
     reset,
   } = useForm();
 
-  const form = useRef();
+  const form = useRef(null);
 
   const onSubmit = () => {
     emailjs
@@ -33,29 +33,56 @@ const FifthSegment: React.FC = () => {
   };
 
   const bgc = "#0A014F";
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = document.getElementById("fifth-segment");
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView) {
+          setIsVisible(true);
+        }
+      }
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <PageOverlay bgc={bgc}>
-      <div className="flex flex-col items-center justify-center h-full text-center">
-        <h2 className="text-5xl text-lime-400 font-semibold">
-          Get In Touch!
+      <div
+        id="fifth-segment"
+        className={`flex flex-col items-center justify-center h-full p-8 w-full transition-opacity duration-1000 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <h2 className="text-6xl text-lime-400 font-bold mb-4">
+          Send me a message!
         </h2>
-        <p className="text-lg text-white mt-2">
-          Got a project in mind? Just send me a message!
+        <p className="text-lg text-white mb-6">
+          Got a question or proposal, or just want to say hello? Go ahead.
         </p>
 
         <form
           ref={form}
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full max-w-xl mt-8 bg-gray-800 p-6 rounded-lg shadow-lg"
+          className="w-2/4 bg-gray-800 p-10 rounded-lg shadow-lg space-y-8"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-10">
             <div className="flex flex-col">
-              <label className="text-white font-semibold">Your Name</label>
+              <label className="text-gray-300 font-semibold">Your Name</label>
               <input
                 {...register("name", { required: "Name is required" })}
                 name="name"
-                className="px-6 py-4 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                className="border-b border-white bg-transparent px-4 py-3 rounded-none focus:outline-none focus:ring-0 focus:border-white text-gray-300"
                 placeholder="Enter your name"
               />
               {errors.name && (
@@ -66,7 +93,7 @@ const FifthSegment: React.FC = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="text-white font-semibold">Email</label>
+              <label className="text-gray-300 font-semibold">Email Address</label>
               <input
                 {...register("email", {
                   required: "Email is required",
@@ -76,7 +103,7 @@ const FifthSegment: React.FC = () => {
                   },
                 })}
                 name="email"
-                className="px-8 py-4 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                className="border-b border-white bg-transparent px-4 py-3 rounded-none focus:outline-none focus:ring-0 focus:border-white text-gray-300"
                 placeholder="Enter your email"
               />
               {errors.email && (
@@ -87,12 +114,12 @@ const FifthSegment: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col mt-6">
-            <label className="text-white font-semibold">Your Message</label>
+          <div className="flex flex-col">
+            <label className="text-gray-300 font-semibold">Your Message</label>
             <textarea
               {...register("message", { required: "Message is required" })}
               name="message"
-              className="px-6 py-4 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="border border-gray-500 bg-transparent px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-400"
               rows={6}
               placeholder="Write your message"
             ></textarea>
@@ -103,10 +130,10 @@ const FifthSegment: React.FC = () => {
             )}
           </div>
 
-          <div className="mt-8 flex justify-center">
+          <div className="flex justify-center">
             <button
               type="submit"
-              className="px-16 py-3 bg-blue-900 hover:bg-blue-800 text-white rounded-md font-semibold transition duration-300 ease-in-out transform hover:scale-105"
+              className="w-1/2 md:w-1/3 px-6 py-3 bg-[#4A68B0] text-white font-bold rounded-md shadow-lg transition duration-300 ease-in-out transform hover:scale-105"
             >
               Send Message
             </button>

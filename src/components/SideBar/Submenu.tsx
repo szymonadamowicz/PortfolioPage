@@ -8,7 +8,6 @@ interface SubmenuProps {
 
 const Submenu: React.FC<SubmenuProps> = ({ segments, goToSegment }) => {
   const router = useRouter();
-
   const isHomePage = router.pathname === "/";
 
   const handleEmailClick = () => {
@@ -23,39 +22,37 @@ const Submenu: React.FC<SubmenuProps> = ({ segments, goToSegment }) => {
   };
 
   return (
-    <div className="w-full h-full bg-gray-800 flex justify-center items-center pt-8">
-      <div className="space-y-4 text-center py-10 w-full p-2">
+    <div className="w-full h-full bg-white flex flex-col items-center py-10">
+      <div className="text-center w-full px-4">
         {!isHomePage && (
-          <div className="text-white w-full text-md hover:text-blue-400 transition duration-300 border-t border-b border-white py-2">
-            <Link className="block w-full" href="/">Home</Link>
+          <div className="text-black text-md hover:text-blue-400 transition duration-300 border-b border-gray-300 py-2">
+            <Link className="block" href="/">Home</Link>
           </div>
         )}
-        <div className="text-white text-md hover:text-blue-400 transition duration-300 border-t border-b border-white py-2">
-          <Link className="block w-full" href="/myresume" target="_blank" rel="noopener noreferrer">
+        <div className="text-black text-md hover:text-blue-400 transition duration-300 border-b border-gray-300 py-2">
+          <Link className="block" href="/myresume" target="_blank" rel="noopener noreferrer">
             My Resume
           </Link>
         </div>
-        <div className="text-white text-md hover:text-blue-400 transition duration-300 border-t border-b border-white py-2">
-          <Link className="block w-full" href="/mywork">My Projects</Link>
+        <div className="text-black text-md hover:text-blue-400 transition duration-300 border-b border-gray-300 py-2">
+          <Link className="block" href="/mywork">My Projects</Link>
         </div>
-        <div className="mt-8 text-lime-400 border-t border-b border-white py-2">
-          <h3 className="text-2xl font-semibold">
+        <div className="mt-6 text-lime-400 border-t border-b border-gray-300 pb-4 pt-4">
+          <h3 className="text-2xl font-semibold mb-2">
             Contact Me!
           </h3>
-          <div className="mt-4">
-            <button
-              onClick={handleEmailClick}
-              className="text-white text-lg underline hover:text-blue-400 transition duration-300 w-full"
-            >
-              adamowiczszymon8@gmail.com
-            </button>
-          </div>
+          <button
+            onClick={handleEmailClick}
+            className="text-black text-lg underline hover:text-blue-400 transition duration-300"
+          >
+            adamowiczszymon8@gmail.com
+          </button>
           <div className="mt-2">
             <Link
               href="https://www.linkedin.com/in/szymonadamowicz/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white text-lg underline hover:text-blue-400 transition duration-300 block w-full"
+              className="text-black text-lg underline hover:text-blue-400 transition duration-300"
             >
               Linkedin
             </Link>
