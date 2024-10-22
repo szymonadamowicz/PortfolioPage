@@ -58,7 +58,9 @@ const useScrollHandler = (
       setSegmentNumber(newSegmentNumber);
       smoothScroll(targetScroll);
 
-      window.location.hash = `#${newSegmentNumber}`;
+      sessionStorage.setItem("currentSegment", String(newSegmentNumber));
+
+      window.history.replaceState(null, "", window.location.pathname);
 
       setTimeout(() => {
         setIsScrolling(false);
@@ -84,12 +86,11 @@ const useScrollHandler = (
     if (typeof window !== "undefined") {
       setSegmentHeight(window.innerHeight);
 
-      const currentHash = window.location.hash;
-      const hashSegment = currentHash ? parseInt(currentHash.replace("#", "")) : 0;
+      const savedSegment = sessionStorage.getItem("currentSegment");
+      const initialSegment = savedSegment ? parseInt(savedSegment) : 0;
 
-      setSegmentNumber(hashSegment);
-
-      window.scrollTo(0, hashSegment * window.innerHeight);
+      setSegmentNumber(initialSegment);
+      window.scrollTo(0, initialSegment * window.innerHeight);
 
       window.addEventListener("wheel", handleScroll, { passive: false });
       window.addEventListener("resize", updateSegmentHeight);
