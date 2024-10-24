@@ -25,16 +25,16 @@ const SecondSegment = () => {
 
   return (
     <PageOverlay bgc={bgc}>
-      <div id="second-segment" className="flex flex-col items-center gap-8">
+      <div id="second-segment" className="flex flex-col items-center gap-8 absolute w-[340px] sm:relative md:w-3/4">
         <h1
-          className={`text-6xl font-bold text-lime-400 transform transition-all duration-1000 ease-in-out ${
+          className={`text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-lime-400 transform transition-all duration-1000 ease-in-out ${
             isVisible ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"
           }`}
         >
           Who am I?
         </h1>
         <p
-          className={`text-xl text-white w-2/4 transform transition-all duration-1000 ease-in-out delay-200 ${
+          className={`text-md sm:text-md md:text-lg lg:text-xl text-white transform transition-all duration-1000 ease-in-out delay-200 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >

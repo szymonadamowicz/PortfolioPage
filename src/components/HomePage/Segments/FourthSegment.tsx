@@ -27,49 +27,50 @@ const FourthSegment = () => {
     <PageOverlay bgc={bgc}>
       <div
         id="fourth-segment"
-        className="flex flex-col md:flex-row justify-center items-center gap-10"
+        className="flex flex-col md:flex-row justify-center items-center gap-6 p-2 absolute w-[340px] sm:relative md:w-full lg:w-3/4"
       >
         <div
-          className={`flex flex-col items-center bg-gray-800 p-8 rounded-lg shadow-lg md:w-1/3 text-center h-80 transform transition-all duration-700 ${
+          className={`flex flex-col items-center bg-gray-800 p-2 sm:p-6 rounded-lg shadow-lg text-center w-4/5 sm:w-full h-64 sm:h-96 transform transition-all duration-700 ${
             isVisible
               ? "translate-x-0 opacity-100"
               : "-translate-x-[150%] opacity-0"
           }`}
         >
-          <h1 className="text-4xl font-semibold text-lime-400">
+          <h1 className="text-lg sm:text-xl lg:text-2xl font-semibold text-lime-400">
             I create user-friendly applications
           </h1>
-          <p className="mt-10 text-white text-lg">
+          <p className="mt-4 sm:mt-16 md:mt-12 lg:mt-16 text-sm sm:text-base text-white">
             I develop a range of web apps that are designed to enhance user
             experience and functionality. My projects emphasize clean design and
             efficient coding.
           </p>
-          <div className="mt-auto">
+          <div className="absolute bottom-6">
             <Link href={"/mywork"}>
-              <button className="px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white rounded-md transition duration-300">
+              <button className="px-4 sm:px-10 py-2 sm:py-4 bg-blue-900 hover:bg-blue-800 text-white rounded-md transition duration-300">
                 Go to MyWork
               </button>
             </Link>
           </div>
         </div>
 
+        {/* Drugi blok */}
         <div
-          className={`flex flex-col items-center bg-gray-800 p-8 rounded-lg shadow-lg md:w-1/3 text-center h-80 transform transition-all duration-700 ${
+          className={`relative flex flex-col items-center bg-gray-800 p-2 sm:p-6 rounded-lg shadow-lg text-center w-4/5 sm:w-full h-64 sm:h-96 transform transition-all duration-700 ${
             isVisible
               ? "translate-x-0 opacity-100"
               : "translate-x-[150%] opacity-0"
           }`}
         >
-          <h1 className="text-4xl font-semibold text-lime-400">
+          <h1 className="text-lg sm:text-xl lg:text-2xl font-semibold text-lime-400">
             Discover my professional journey
           </h1>
-          <p className="mt-10 text-white text-lg">
+          <p className="mt-4 sm:mt-16 md:mt-12 lg:mt-16 text-sm sm:text-base text-white">
             My CV provides insights into my skills and experiences. It showcases
             the projects I've worked on and the knowledge I've gained.
           </p>
-          <div className="mt-auto">
+          <div className="absolute bottom-6">
             <a href="/CV.pdf" download>
-              <button className="px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white rounded-md transition duration-300">
+              <button className="px-4 sm:px-10 py-2 sm:py-4 bg-blue-900 hover:bg-blue-800 text-white rounded-md transition duration-300">
                 Download CV
               </button>
             </a>

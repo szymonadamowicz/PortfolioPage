@@ -10,7 +10,7 @@ const SideBarDisplay: React.FC<SegmentProps> = ({
   return (
     <>
       <SubmenuButton segments={segments} goToSegment={goToSegment} />
-      <div className="fixed right-12 top-1/2 transform -translate-y-1/2">
+      <div className="fixed right-4 top-1/2 transform -translate-y-1/2 hidden lg:block">
         <SegmentCounter
           segmentNumber={segmentNumber}
           segments={segments}

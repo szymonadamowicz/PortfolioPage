@@ -6,9 +6,12 @@ const FirstSegment = () => {
   const bgc = "#0A014F";
   return (
     <PageOverlay bgc={bgc}>
-      <div className="flex flex-col items-center gap-8">
-        <h1 className="text-6xl font-bold text-lime-400">Hello, I'm Szymon!</h1>
-        <h2 className="text-4xl text-white">
+      <div id="second-segment" className="flex flex-col items-center gap-8 absolute w-[340px] sm:relative md:w-3/4">
+      <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-lime-400 text-center">
+          Hello, I'm Szymon!
+        </h1>
+
+        <h2 className="text-xl sm:text-3xl lg:text-4xl text-white text-center">
           I'm a{" "}
           <ReactTyped
             strings={["Developer", "Student", "Designer"]}

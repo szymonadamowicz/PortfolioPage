@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="w-full overflow-hidden">
       <SideBarDisplay
         segmentNumber={segmentNumber}
         segments={segments}

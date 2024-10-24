@@ -25,9 +25,9 @@ const ThirdSegment = () => {
 
   return (
     <PageOverlay bgc={bgc}>
-      <div id="third-segment" className="flex flex-col items-center gap-8">
+      <div id="third-segment" className="flex flex-col items-center gap-8 absolute w-[340px] sm:relative md:w-3/4">
         <h1
-          className={`text-6xl font-bold text-lime-400 transform transition-all duration-1000 ease-in-out ${
+          className={`text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-lime-400 text-center transform transition-all duration-1000 ease-in-out ${
             isVisible ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"
           }`}
         >
@@ -38,7 +38,7 @@ const ThirdSegment = () => {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
-          <ul className="text-white text-lg list-disc list-inside mx-auto max-w-2xl">
+          <ul className="text-md sm:text-md md:text-lg lg:text-xl text-white text-left list-disc list-inside mx-auto max-w-2xl">
             <li>
               Frontend Developer and Computer Science student at the University
               of Gdańsk.

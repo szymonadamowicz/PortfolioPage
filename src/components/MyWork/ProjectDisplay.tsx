@@ -50,7 +50,7 @@ const ProjectDisplay: React.FC<projectInfoProps> = ({ projectInfo }) => {
         >
           <div className="bg-gray-800 rounded-lg shadow-lg w-full max-w-4xl h-auto p-8">
             <div className="relative bg-gray-800 rounded-lg shadow dark:bg-gray-800">
-              <div className="flex items-center justify-between p-6 md:p-7 border-b rounded-t dark:border-gray-600">
+              <div className="flex items-center justify-between p-6 border-b rounded-t dark:border-gray-600">
                 <h3 className="text-2xl font-semibold text-white dark:text-white">
                   Project Details
                 </h3>
