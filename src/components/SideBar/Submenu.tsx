@@ -24,9 +24,9 @@ const Submenu: React.FC<SubmenuProps> = ({ segments, goToSegment }) => {
 
   return (
     <div className="w-full h-full bg-white flex flex-col xl:items-center py-10 xl:py-0 xl:h-full">
-      <div className="flex flex-col h-1/2 w-full justify-end items-center mt-12 gap-6">
+      <div className="flex flex-col h-1/2 w-full justify-end items-center mt-12 gap-4">
         {!isHomePage && (
-          <div className="text-black text-lg xl:text-2xl hover:text-blue-400 transition duration-300">
+        <div className="text-black text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-2xl hover:text-blue-400 transition duration-300">
             <Link className="block" href="/">
               Home
             </Link>

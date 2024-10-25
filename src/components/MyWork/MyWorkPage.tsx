@@ -1,8 +1,11 @@
+import { useState } from "react";
 import ProjectDisplay from "../../components/MyWork/ProjectDisplay";
 import PageOverlay from "../PageOverlay";
 import SubmenuButton from "../SideBar/SubmenuButton";
 
 const MyWorkPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const projects = [
     {
       name: "PortfolioPage",
@@ -45,20 +48,24 @@ const MyWorkPage = () => {
 
   return (
     <PageOverlay bgc="#0A014F">
-      <SubmenuButton />
-      <div className="h-screen justify-evenly flex flex-col items-center">
-        <div className="flex flex-col items-center gap-12">
-          <h1 className="text-6xl font-bold text-white">
+      <SubmenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
+      <div
+        className={`h-full min-h-screen w-3/4 justify-between flex flex-col items-center pb-8 ${
+          isOpen && window.innerWidth < 1280 ? "hidden" : ""
+        }`}
+      >
+        <div className="flex flex-col items-center gap-12 sm:gap-16 px-4 mt-20">
+          <h1 className="text-5xl md:text-6xl font-bold text-white">
             <span className="text-lime-400">/</span>
             mywork.
           </h1>
 
-          <div className="text-2xl text-lime-400 tracking-wide">
+          <div className="text-2xl sm:text-2xl text-lime-400 tracking-wide text-center mb-12">
             Projects that I've done in the past:
           </div>
         </div>
 
-        <div className="w-full grid grid-cols-3 gap-10 max-w-6xl justify-items-center">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl justify-items-center px-0">
           {projects.map((item, index) => (
             <div
               key={index}
@@ -74,6 +81,6 @@ const MyWorkPage = () => {
       </div>
     </PageOverlay>
   );
-};
+};  
 
 export default MyWorkPage;

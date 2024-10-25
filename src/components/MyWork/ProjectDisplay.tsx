@@ -11,7 +11,7 @@ const ProjectDisplay: React.FC<projectInfoProps> = ({ projectInfo }) => {
   return (
     <div>
       <div
-        className="w-80 h-80 bg-gray-900 text-white shadow-lg rounded-lg p-4 flex flex-col justify-between border border-gray-800 transform transition-transform hover:scale-105 cursor-pointer"
+        className="w-72 lg:w-80 h-72 lg:h-80 bg-gray-900 text-white shadow-lg rounded-lg p-4 flex flex-col justify-between border border-gray-800 transform transition-transform hover:scale-105 cursor-pointer"
         onClick={openModal}
       >
         <div className="w-full h-2/4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md p-4 flex items-center justify-center">
