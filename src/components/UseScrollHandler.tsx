@@ -3,12 +3,13 @@ import { useState, useEffect, useCallback, useRef } from "react";
 const useScrollHandler = (
   maxSegment,
   scrollSpeed,
-  scrollTimeoutDuration
+  scrollTimeoutDuration,
+  isOpen
 ) => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [segmentHeight, setSegmentHeight] = useState(0);
   const [segmentNumber, setSegmentNumberState] = useState(0);
-  
+
   const segmentNumberRef = useRef(segmentNumber);
 
   const setSegmentNumber = (newSegmentNumber) => {
@@ -43,25 +44,19 @@ const useScrollHandler = (
 
   const handleScroll = useCallback(
     (event) => {
+      if ((isOpen && window.innerWidth < 1280) || isScrolling) return;
+
       event.preventDefault();
-
-      if (isScrolling) return;
-
       setIsScrolling(true);
 
       const delta = event.deltaY;
-      let newSegmentNumber = delta > 0 ? segmentNumberRef.current + 1 : segmentNumberRef.current - 1;
+      let newSegmentNumber =
+        delta > 0 ? segmentNumberRef.current + 1 : segmentNumberRef.current - 1;
 
-      if (newSegmentNumber < 0) {
-        newSegmentNumber = 0;
-      }
-
-      if (newSegmentNumber > maxSegment) {
-        newSegmentNumber = maxSegment;
-      }
+      if (newSegmentNumber < 0) newSegmentNumber = 0;
+      if (newSegmentNumber > maxSegment) newSegmentNumber = maxSegment;
 
       const targetScroll = newSegmentNumber * segmentHeight;
-
       setSegmentNumber(newSegmentNumber);
       smoothScroll(targetScroll);
 
@@ -72,6 +67,7 @@ const useScrollHandler = (
       }, scrollTimeoutDuration);
     },
     [
+      isOpen,
       isScrolling,
       segmentHeight,
       maxSegment,

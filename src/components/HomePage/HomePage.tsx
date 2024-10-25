@@ -23,7 +23,12 @@ const HomePage: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { segmentNumber, segmentHeight, setSegmentNumber, smoothScroll } =
-    useScrollHandler(segments, scrollSpeed, scrollTimeoutDuration);
+    useScrollHandler(
+      segments,
+      scrollSpeed,
+      scrollTimeoutDuration,
+      isOpen && window.innerWidth < 1280
+    );
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -32,18 +37,28 @@ const HomePage: React.FC = () => {
       document.body.style.overflow = "auto";
     };
   }, []);
-  
+
+  useEffect(() => {
+    if (isOpen && window.innerWidth < 1280) {
+      const currentScrollY = window.scrollY;
+      const preventScroll = () => window.scrollTo(0, currentScrollY);
+
+      window.addEventListener("scroll", preventScroll);
+      return () => window.removeEventListener("scroll", preventScroll);
+    }
+  }, [isOpen]);
 
   const goToSegment = (segment: number) => {
+    if (isOpen && window.innerWidth < 1280) return;
     const targetScroll = segment * segmentHeight;
     setSegmentNumber(segment);
     smoothScroll(targetScroll);
   };
 
-  
+  const adjustedIsOpen = isOpen && window.innerWidth < 1280;
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden">
       <SideBarDisplay
         isOpen={isOpen}
         setIsOpen={setIsOpen}
@@ -54,7 +69,7 @@ const HomePage: React.FC = () => {
       <div>
         {segmentsName.map((SegmentComponent, index) => (
           <div key={index} style={{ height: "100vh" }}>
-            <SegmentComponent isOpen={isOpen} />
+            <SegmentComponent isOpen={adjustedIsOpen} />
           </div>
         ))}
       </div>
