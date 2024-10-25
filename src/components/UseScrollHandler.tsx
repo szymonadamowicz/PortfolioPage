@@ -1,21 +1,28 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 const useScrollHandler = (
-  maxSegment: number,
-  scrollSpeed: number,
-  scrollTimeoutDuration: number
+  maxSegment,
+  scrollSpeed,
+  scrollTimeoutDuration
 ) => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [segmentHeight, setSegmentHeight] = useState(0);
-  const [segmentNumber, setSegmentNumber] = useState(0);
+  const [segmentNumber, setSegmentNumberState] = useState(0);
+  
+  const segmentNumberRef = useRef(segmentNumber);
+
+  const setSegmentNumber = (newSegmentNumber) => {
+    setSegmentNumberState(newSegmentNumber);
+    segmentNumberRef.current = newSegmentNumber;
+  };
 
   const smoothScroll = useCallback(
-    (targetY: number) => {
+    (targetY) => {
       const startY = window.scrollY;
       const distance = targetY - startY;
-      let startTime: number | null = null;
+      let startTime = null;
 
-      const animateScroll = (currentTime: number) => {
+      const animateScroll = (currentTime) => {
         if (startTime === null) {
           startTime = currentTime;
         }
@@ -35,7 +42,7 @@ const useScrollHandler = (
   );
 
   const handleScroll = useCallback(
-    (event: WheelEvent) => {
+    (event) => {
       event.preventDefault();
 
       if (isScrolling) return;
@@ -43,7 +50,7 @@ const useScrollHandler = (
       setIsScrolling(true);
 
       const delta = event.deltaY;
-      let newSegmentNumber = delta > 0 ? segmentNumber + 1 : segmentNumber - 1;
+      let newSegmentNumber = delta > 0 ? segmentNumberRef.current + 1 : segmentNumberRef.current - 1;
 
       if (newSegmentNumber < 0) {
         newSegmentNumber = 0;
@@ -60,8 +67,6 @@ const useScrollHandler = (
 
       sessionStorage.setItem("currentSegment", String(newSegmentNumber));
 
-      window.history.replaceState(null, "", window.location.pathname);
-
       setTimeout(() => {
         setIsScrolling(false);
       }, scrollTimeoutDuration);
@@ -69,7 +74,6 @@ const useScrollHandler = (
     [
       isScrolling,
       segmentHeight,
-      segmentNumber,
       maxSegment,
       scrollTimeoutDuration,
       smoothScroll,
@@ -90,6 +94,8 @@ const useScrollHandler = (
       const initialSegment = savedSegment ? parseInt(savedSegment) : 0;
 
       setSegmentNumber(initialSegment);
+      segmentNumberRef.current = initialSegment;
+
       window.scrollTo(0, initialSegment * window.innerHeight);
 
       window.addEventListener("wheel", handleScroll, { passive: false });

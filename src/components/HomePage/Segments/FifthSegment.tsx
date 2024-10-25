@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import PageOverlay from "../../PageOverlay";
 import emailjs from "@emailjs/browser";
 
-const FifthSegment: React.FC = () => {
+const FifthSegment = ({ isOpen }) => {
   const {
     register,
     handleSubmit,
@@ -38,11 +38,13 @@ const FifthSegment: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById("fifth-segment");
+      
       if (element) {
         const rect = element.getBoundingClientRect();
         const isInView = rect.top < window.innerHeight && rect.bottom > 0;
 
         if (isInView) {
+
           setIsVisible(true);
         }
       }
@@ -60,7 +62,7 @@ const FifthSegment: React.FC = () => {
     <PageOverlay bgc={bgc}>
       <div
         id="second-segment"
-        className="flex flex-col items-center gap-8 absolute w-[340px] sm:relative sm:w-full"
+        className={`flex flex-col items-center gap-8 absolute 340px] sm:relative sm:w-full ${isOpen ? "hidden" : ""}`}
       >
         <div
           id="fifth-segment"

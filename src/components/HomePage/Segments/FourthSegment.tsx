@@ -2,18 +2,22 @@ import React, { useState, useEffect } from "react";
 import PageOverlay from "../../PageOverlay";
 import Link from "next/link";
 
-const FourthSegment = () => {
+const FourthSegment = ({ isOpen }) => {
   const bgc = "#4A68B0";
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById("fourth-segment");
-      const rect = element.getBoundingClientRect();
-      const isInView = rect.top >= 0 && rect.bottom <= window.innerHeight;
 
-      if (isInView) {
-        setIsVisible(true);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView) {
+
+          setIsVisible(true);
+        }
       }
     };
 
@@ -27,13 +31,13 @@ const FourthSegment = () => {
     <PageOverlay bgc={bgc}>
       <div
         id="fourth-segment"
-        className="flex flex-col md:flex-row justify-center items-center gap-6 p-2 absolute w-[340px] sm:relative md:w-full lg:w-3/4"
+        className={`flex flex-col items-center gap-8 absolute w-[350px] sm:relative md:w-3/4 lg:w-2/4 ${isOpen ? "hidden" : ""}`}
       >
         <div
           className={`flex flex-col items-center bg-gray-800 p-2 sm:p-6 rounded-lg shadow-lg text-center w-4/5 sm:w-full h-64 sm:h-96 transform transition-all duration-700 ${
             isVisible
               ? "translate-x-0 opacity-100"
-              : "-translate-x-[150%] opacity-0"
+              : "-translate-x-[5%] opacity-0"
           }`}
         >
           <h1 className="text-lg sm:text-xl lg:text-2xl font-semibold text-lime-400">
@@ -53,12 +57,11 @@ const FourthSegment = () => {
           </div>
         </div>
 
-        {/* Drugi blok */}
         <div
           className={`relative flex flex-col items-center bg-gray-800 p-2 sm:p-6 rounded-lg shadow-lg text-center w-4/5 sm:w-full h-64 sm:h-96 transform transition-all duration-700 ${
             isVisible
               ? "translate-x-0 opacity-100"
-              : "translate-x-[150%] opacity-0"
+              : "translate-x-[5%] opacity-0"
           }`}
         >
           <h1 className="text-lg sm:text-xl lg:text-2xl font-semibold text-lime-400">

@@ -2,11 +2,11 @@ import React from "react";
 import PageOverlay from "../../PageOverlay";
 import { ReactTyped } from "react-typed";
 
-const FirstSegment = () => {
+const FirstSegment = ({isOpen}) => {
   const bgc = "#0A014F";
   return (
     <PageOverlay bgc={bgc}>
-      <div id="second-segment" className="flex flex-col items-center gap-8 absolute w-[340px] sm:relative md:w-3/4">
+      <div id="first-segment" className={`flex flex-col items-center gap-8 absolute w-[350px] sm:relative md:w-3/4 ${isOpen ? "hidden" : ""}`}>
       <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-lime-400 text-center">
           Hello, I'm Szymon!
         </h1>
