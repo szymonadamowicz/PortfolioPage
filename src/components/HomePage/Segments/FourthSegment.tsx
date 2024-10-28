@@ -31,7 +31,7 @@ const FourthSegment = ({ isOpen }) => {
     <PageOverlay bgc={bgc}>
       <div
         id="fourth-segment"
-        className={`flex flex-col items-center gap-8 absolute w-[350px] sm:relative md:w-3/4 lg:w-2/4 ${isOpen ? "hidden" : ""}`}
+        className={`flex flex-col items-center gap-8 absolute w-[300px] sm:relative md:w-3/4 lg:w-2/4 ${isOpen ? "hidden" : ""}`}
       >
         <div
           className={`flex flex-col items-center bg-gray-800 p-2 sm:p-6 rounded-lg shadow-lg text-center w-4/5 sm:w-full h-64 sm:h-96 transform transition-all duration-700 ${
