@@ -33,7 +33,7 @@ const SecondSegment = ({ isOpen }) => {
     <PageOverlay bgc={bgc}>
       <div
         id="second-segment"
-        className={`flex flex-col items-center gap-8 absolute w-[350px] sm:relative md:w-3/4 ${
+        className={`flex flex-col items-center gap-8 absolute w-[250px] sm:relative md:w-3/4 ${
           isOpen ? "hidden" : ""
         }`}
       >
@@ -47,7 +47,7 @@ const SecondSegment = ({ isOpen }) => {
           Who am I?
         </h1>
         <p
-          className={`text-md sm:text-md md:text-lg lg:text-xl text-white transform transition-all duration-1000 ease-in-out delay-200 ${
+          className={`text-sm sm:text-md md:text-lg lg:text-xl text-white transform transition-all duration-1000 ease-in-out delay-200 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >

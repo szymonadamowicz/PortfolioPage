@@ -31,7 +31,7 @@ const ThirdSegment = ({ isOpen }) => {
     <PageOverlay bgc={bgc}>
       <div
         id="third-segment"
-        className={`flex flex-col items-center gap-8 absolute w-[350px] sm:relative md:w-3/4 ${
+        className={`flex flex-col items-center gap-8 absolute w-[250px] sm:relative md:w-3/4 ${
           isOpen ? "hidden" : ""
         }`}
       >
@@ -49,7 +49,7 @@ const ThirdSegment = ({ isOpen }) => {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
-          <ul className="text-md sm:text-md md:text-lg lg:text-xl text-white text-left list-disc list-inside mx-auto max-w-2xl">
+          <ul className="text-sm sm:text-md md:text-lg lg:text-xl text-white text-left list-disc list-inside mx-auto max-w-2xl">
             <li>
               Frontend Developer and Computer Science student at the University
               of Gdańsk.
