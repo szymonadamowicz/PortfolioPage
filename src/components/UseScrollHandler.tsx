@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 
 const useScrollHandler = (
-  maxSegment,
-  scrollSpeed,
-  scrollTimeoutDuration,
-  isOpen
+  maxSegment: number,
+  scrollSpeed: number,
+  scrollTimeoutDuration: number,
+  _isOpen: boolean
 ) => {
   const [isRendered, setIsRendered] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -92,7 +92,12 @@ const useScrollHandler = (
   }, [isRendered]);
 
   useEffect(() => {
-    if (isSmallScreen || !isRendered) return;
+    if (isSmallScreen) {
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    if (!isRendered) return;
 
     setSegmentHeight(window.innerHeight);
 
