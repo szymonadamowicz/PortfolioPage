@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { projectInfoProps } from "../../types/types";
 
@@ -7,6 +7,18 @@ const ProjectDisplay: React.FC<projectInfoProps> = ({ projectInfo }) => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isModalOpen]);
 
   return (
     <div>
@@ -21,15 +33,26 @@ const ProjectDisplay: React.FC<projectInfoProps> = ({ projectInfo }) => {
         </div>
 
         <div className="flex flex-col align-top mb-4 h-full mt-6">
-          <span>
-            <Link
-              href={projectInfo.link}
-              className="text-indigo-400 hover:underline text-lg"
-            >
-              GitHub Link
-            </Link>
-          </span>
-
+          {!(projectInfo.GitLink === "") && (
+            <span>
+              <Link
+                href={projectInfo.GitLink}
+                className="text-indigo-400 hover:underline text-lg"
+              >
+                GitHub Link
+              </Link>
+            </span>
+          )}
+          {!(projectInfo.VercelLink === "") && (
+            <span>
+              <Link
+                href={projectInfo.VercelLink}
+                className="text-indigo-400 hover:underline text-lg"
+              >
+                Vercel Link
+              </Link>
+            </span>
+          )}
           <div className="text-gray-300 mt-2">
             <span className="text-sm font-semibold">Stack:</span>
             <ul className="mt-2 list-disc list-inside">
@@ -50,8 +73,8 @@ const ProjectDisplay: React.FC<projectInfoProps> = ({ projectInfo }) => {
         >
           <div className="bg-gray-800 rounded-lg shadow-lg w-full max-w-4xl h-auto p-8">
             <div className="relative bg-gray-800 rounded-lg shadow dark:bg-gray-800">
-              <div className="flex items-center justify-between p-6 border-b rounded-t dark:border-gray-600">
-                <h3 className="text-2xl font-semibold text-white dark:text-white">
+              <div className="flex items-center justify-between p-2 sm:p-6 border-b rounded-t dark:border-gray-600">
+                <h3 className="text-xl sm:text-2xl font-semibold text-white dark:text-white">
                   Project Details
                 </h3>
                 <button
@@ -77,18 +100,18 @@ const ProjectDisplay: React.FC<projectInfoProps> = ({ projectInfo }) => {
                 </button>
               </div>
 
-              <div className="p-5 space-y-4">
+              <div className="p-3 sm:p-6 space-y-4 max-h-60 overflow-y-auto">
                 {projectInfo.desc.split("\n").map((paragraph, index) => (
                   <p
                     key={index}
-                    className="text-base leading-relaxed text-gray-400"
+                    className="text-sm sm:text-base leading-relaxed text-gray-400"
                   >
                     {paragraph}
                   </p>
                 ))}
               </div>
 
-              <div className="flex items-center p-7 border-t border-gray-600 rounded-b">
+              <div className="flex items-center p-3 sm:p-6 border-t border-gray-600 rounded-b">
                 <button
                   onClick={closeModal}
                   className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg p-3 text-center"

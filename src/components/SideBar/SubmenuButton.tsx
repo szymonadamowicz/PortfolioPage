@@ -35,7 +35,7 @@ const SubmenuButton: React.FC<SubmenuProps> = ({
   };
 
   return (
-    <div className="fixed right-0 top-0 xl:right-12 xl:top-12">
+    <div className="fixed right-0 top-0 2xl:right-12 2xl:top-12">
       <button
         className="w-14 h-14 z-50 absolute right-0 flex items-center justify-center focus:outline-none"
         onPointerEnter={handleMouseEnter}
