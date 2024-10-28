@@ -9,8 +9,19 @@ const useScrollHandler = (
   const [isScrolling, setIsScrolling] = useState(false);
   const [segmentHeight, setSegmentHeight] = useState(0);
   const [segmentNumber, setSegmentNumberState] = useState(0);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const segmentNumberRef = useRef(segmentNumber);
+
+  const updateScreenSize = () => {
+    const smallScreen = window.innerWidth < 640;
+    setIsSmallScreen(smallScreen);
+    if (smallScreen) {
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
+  };
 
   const setSegmentNumber = (newSegmentNumber) => {
     setSegmentNumberState(newSegmentNumber);
@@ -19,6 +30,7 @@ const useScrollHandler = (
 
   const smoothScroll = useCallback(
     (targetY) => {
+      if (isSmallScreen) return;
       const startY = window.scrollY;
       const distance = targetY - startY;
       let startTime = null;
@@ -39,12 +51,12 @@ const useScrollHandler = (
 
       requestAnimationFrame(animateScroll);
     },
-    [scrollSpeed]
+    [scrollSpeed, isSmallScreen]
   );
 
   const handleScroll = useCallback(
     (event) => {
-      if ((isOpen && window.innerWidth < 1280) || isScrolling) return;
+      if (isSmallScreen || isScrolling) return;
 
       event.preventDefault();
       setIsScrolling(true);
@@ -66,43 +78,34 @@ const useScrollHandler = (
         setIsScrolling(false);
       }, scrollTimeoutDuration);
     },
-    [
-      isOpen,
-      isScrolling,
-      segmentHeight,
-      maxSegment,
-      scrollTimeoutDuration,
-      smoothScroll,
-    ]
+    [isScrolling, segmentHeight, maxSegment, smoothScroll, scrollTimeoutDuration, isSmallScreen]
   );
 
-  const updateSegmentHeight = () => {
-    if (typeof window !== "undefined") {
-      setSegmentHeight(window.innerHeight);
-    }
-  };
+  useEffect(() => {
+    updateScreenSize();
+    window.addEventListener("resize", updateScreenSize);
+
+    return () => window.removeEventListener("resize", updateScreenSize);
+  }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setSegmentHeight(window.innerHeight);
+    if (isSmallScreen) return;
 
-      const savedSegment = sessionStorage.getItem("currentSegment");
-      const initialSegment = savedSegment ? parseInt(savedSegment) : 0;
+    setSegmentHeight(window.innerHeight);
 
-      setSegmentNumber(initialSegment);
-      segmentNumberRef.current = initialSegment;
+    const savedSegment = sessionStorage.getItem("currentSegment");
+    const initialSegment = savedSegment ? parseInt(savedSegment) : 0;
 
-      window.scrollTo(0, initialSegment * window.innerHeight);
+    setSegmentNumber(initialSegment);
+    segmentNumberRef.current = initialSegment;
 
-      window.addEventListener("wheel", handleScroll, { passive: false });
-      window.addEventListener("resize", updateSegmentHeight);
+    window.scrollTo(0, initialSegment * window.innerHeight);
+    window.addEventListener("wheel", handleScroll, { passive: false });
 
-      return () => {
-        window.removeEventListener("wheel", handleScroll);
-        window.removeEventListener("resize", updateSegmentHeight);
-      };
-    }
-  }, [handleScroll]);
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, [handleScroll, isSmallScreen]);
 
   return { segmentNumber, segmentHeight, setSegmentNumber, smoothScroll };
 };
