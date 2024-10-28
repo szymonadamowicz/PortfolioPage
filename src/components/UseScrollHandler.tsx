@@ -6,6 +6,7 @@ const useScrollHandler = (
   scrollTimeoutDuration,
   isOpen
 ) => {
+  const [isRendered, setIsRendered] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [segmentHeight, setSegmentHeight] = useState(0);
   const [segmentNumber, setSegmentNumberState] = useState(0);
@@ -13,15 +14,9 @@ const useScrollHandler = (
 
   const segmentNumberRef = useRef(segmentNumber);
 
-  const updateScreenSize = () => {
-    const smallScreen = window.innerWidth < 640;
-    setIsSmallScreen(smallScreen);
-    if (smallScreen) {
-      document.body.style.overflow = "auto";
-    } else {
-      document.body.style.overflow = "hidden";
-    }
-  };
+  useEffect(() => {
+    setIsRendered(true);
+  }, []);
 
   const setSegmentNumber = (newSegmentNumber) => {
     setSegmentNumberState(newSegmentNumber);
@@ -82,14 +77,22 @@ const useScrollHandler = (
   );
 
   useEffect(() => {
-    updateScreenSize();
-    window.addEventListener("resize", updateScreenSize);
+    if (!isRendered) return;
 
-    return () => window.removeEventListener("resize", updateScreenSize);
-  }, []);
+    const handleResize = () => {
+      const smallScreen = window.innerWidth < 640;
+      setIsSmallScreen(smallScreen);
+      document.body.style.overflow = smallScreen ? "auto" : "hidden";
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isRendered]);
 
   useEffect(() => {
-    if (isSmallScreen) return;
+    if (isSmallScreen || !isRendered) return;
 
     setSegmentHeight(window.innerHeight);
 
@@ -105,7 +108,7 @@ const useScrollHandler = (
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
-  }, [handleScroll, isSmallScreen]);
+  }, [handleScroll, isSmallScreen, isRendered]);
 
   return { segmentNumber, segmentHeight, setSegmentNumber, smoothScroll };
 };
