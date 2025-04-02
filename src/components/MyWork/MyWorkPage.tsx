@@ -12,16 +12,29 @@ const MyWorkPage = () => {
       GitLink: "https://github.com/szymonadamowicz/PortfolioPage",
       VercelLink: "https://www.szymonadamowicz.com",
       stack: ["React", "TypeScript", "TailwindCSS", "Next.js"],
-      desc: "1",
+      desc: `Developed a personal portfolio site using React, Typescript, Next.js and Tailwind CSS. Features include:
+
+- CV Download: Quick access to my resume.
+- Project Showcase: Interactive display of my key projects.
+- Contact Form: Easy way to reach me directly.
+- About Me: Overview of my background and experience as a Frontend Developer.`,
     },
     {
-      name: "UserManagementTable",
-      GitLink: "https://github.com/szymonadamowicz/UserManagementTable",
-      VercelLink: "https://shelter-frontend-two.vercel.app",
-      stack: ["React", "TypeScript", "Redux"],
-      desc: `User Management Table is a React application designed to manage users by displaying and filtering user data from an API. The app allows users to view user information such as name, username, email, and phone, with advanced filtering options that update in real-time as input is provided.\n It uses Redux Toolkit to manage the state of the application, ensuring efficient handling of data. TypeScript integration ensures type safety throughout the app, reducing runtime errors. App includes Jest unit tests to verify core functionality. The project uses Tailwind CSS for styling and layout, delivering a clean and modern user interface.`,
+      name: "To Do List",
+      GitLink: "https://github.com/szymonadamowicz/ToDoList_Frontend",
+      GitLink2: "https://github.com/szymonadamowicz/ToDoList_Backend",
+      VercelLink: "https://todolistfrontend-eta.vercel.app",
+      stack: ["React, TypeSript, C#(.Net)"],
+      desc: `A simple task management system with features such as task creation, editing, deletion, completion, reordering (sorting), and automatic hiding of completed tasks after 24 hours.`,
     },
-
+    {
+      name: "Chess",
+      GitLink: "",
+      GitLink2: "https://github.com/szymonadamowicz/Chess",
+      VercelLink: "",
+      stack: ["Python"],
+      desc: `Chess task involves generating an 8x8 board with 'k' randomly placed queens (maximum 5) and one pawn. Each piece is placed in a different position. The program verifies if the pawn is beaten by any queen and displays the positions of the queens that can beat the pawn. Additional features allow the user to re-draw the pawn’s position, remove a queen, and re-verify the beating.\n The entire program was implemented in Python.`,
+    },
     {
       name: "ITCards",
       GitLink: "https://github.com/szymonadamowicz/ITCards",
@@ -42,13 +55,6 @@ const MyWorkPage = () => {
       VercelLink: "",
       stack: ["React", "JavaScript"],
       desc: `The Cat Gallery App is a React application that allows users to browse and filter a collection of cat images. The app includes navigation features to browse through the images using 'Next' and 'Previous' buttons, and also offers filters to show shy cats or hide troublemaking ones. Users are greeted with random interactive messages that pop up as they navigate the gallery.\n The app uses React for the front-end framework, and inline styling for the layout.`,
-    },
-    {
-      name: "Chess",
-      GitLink: "https://github.com/szymonadamowicz/Chess",
-      VercelLink: "",
-      stack: ["Python"],
-      desc: `Chess task involves generating an 8x8 board with 'k' randomly placed queens (maximum 5) and one pawn. Each piece is placed in a different position. The program verifies if the pawn is beaten by any queen and displays the positions of the queens that can beat the pawn. Additional features allow the user to re-draw the pawn’s position, remove a queen, and re-verify the beating.\n The entire program was implemented in Python.`,
     },
   ];
 
@@ -87,6 +93,6 @@ const MyWorkPage = () => {
       </div>
     </PageOverlay>
   );
-};  
+};
 
 export default MyWorkPage;

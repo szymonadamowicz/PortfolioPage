@@ -8,6 +8,7 @@ export interface SegmentProps {
 
 interface projectInfo {
   GitLink: string;
+  GitLink2?: string;
   VercelLink:string;
   name: string;
   stack: string[];

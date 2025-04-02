@@ -39,7 +39,17 @@ const ProjectDisplay: React.FC<projectInfoProps> = ({ projectInfo }) => {
                 href={projectInfo.GitLink}
                 className="text-indigo-400 hover:underline text-lg"
               >
-                GitHub Link
+                GitHub Frontend Link
+              </Link>
+            </span>
+          )}
+          {projectInfo.GitLink2 && (
+            <span>
+              <Link
+                href={projectInfo.GitLink2}
+                className="text-indigo-400 hover:underline text-lg"
+              >
+                GitHub Backend Link
               </Link>
             </span>
           )}
